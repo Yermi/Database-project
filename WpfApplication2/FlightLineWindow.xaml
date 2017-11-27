@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfApplication2.FlightLineWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FlightLineWindow" Height="400" Width="500" Loaded="flight_line_Window_Loaded">
+    <Grid>
+        <Label Content="ID:" VerticalAlignment="Top" Margin="81,40,0,0" HorizontalAlignment="Left" Height="32" FontSize="16" Width="135"/>
+        <Label Content="source:" VerticalAlignment="Top" Margin="81,80,0,0" HorizontalAlignment="Left" Height="32" FontSize="16" Width="135"/>
+        <Label Content="destination:" VerticalAlignment="Top" Margin="81,125,0,0" HorizontalAlignment="Left" Height="32" FontSize="16" Width="145"/>
+        <Label Content="total KM:" VerticalAlignment="Top" Margin="0,172,276,0" HorizontalAlignment="Right" Height="34" FontSize="16" Width="135"/>
+
+        <TextBox Name="flightLineId" VerticalAlignment="Top" Margin="221,40,0,0" HorizontalAlignment="Left" Height="32" FontSize="16" Width="183"/>
+        <ComboBox Name="sourceCMB" VerticalAlignment="Top" Margin="221,82,0,0" HorizontalAlignment="Left" Height="30" FontSize="16" Width="183" SelectionChanged="source_SelectionChanged"/>
+        <ComboBox Name="destinationCMB" VerticalAlignment="Top" Margin="221,125,0,0" HorizontalAlignment="Left" Height="30" FontSize="16" Width="183" SelectionChanged="destination_SelectionChanged"/>
+        <TextBox Name="totalKM_TXB" VerticalAlignment="Top" Margin="221,174,0,0" HorizontalAlignment="Left" Height="32" FontSize="16" Width="183"/>
+
+        <Button Name="flightLinesDoneButton" VerticalAlignment="Bottom" Margin="198,0,0,46" HorizontalAlignment="Left" Height="38" FontSize="24" Width="110" Click="flightLinesDoneButton_Click"/>
+
+    </Grid>
+</Window>

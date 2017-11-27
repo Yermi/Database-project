@@ -1,0 +1,79 @@
+﻿<Window x:Class="WpfApplication2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:WpfApplication2"
+        xmlns:p="clr-namespace:WpfApplication2.Properties"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        Title="TWM Airlines Management" Height="575" Width="975" Loaded="Window_Loaded" Icon="icon.ico">
+
+
+    <Grid RenderTransformOrigin="0.5,0.5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RenderTransform>
+
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.03"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Menu IsMainMenu="True">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Connect" Click="Connect_Click" />
+                <MenuItem Header="_New..." />
+                <Separator />
+                <MenuItem Name="printButton" Header="_Print" Click="printData" IsEnabled="False"/>
+                <MenuItem Header="_Save Table As...">
+                    <MenuItem Name="createPdfFile" Header="_PDF" Click="exportToPdf" IsEnabled="False">
+                        <MenuItem.Icon>
+                            <Image Source="C:\Users\YER\documents\visual studio 2012\Projects\WpfApplication2\WpfApplication2\icons\PDFicon.jpg" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="createCsvFile" Header="_Excell" Click="exportToExcell" IsEnabled="False">
+                        <MenuItem.Icon>
+                            <Image Source="C:\Users\YER\documents\visual studio 2012\Projects\WpfApplication2\WpfApplication2\icons\EXCELLicon.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="_Exit" Click="Exit_Click" />
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Name="add" Header="Add" Click="addToTable" IsEnabled="{Binding ElementName=createPdfFile, Path=IsEnabled}"/>
+                <MenuItem Name="update" Header="Update" Click="updateOnTable" IsEnabled="{Binding ElementName=createPdfFile, Path=IsEnabled}"/>
+                <MenuItem Name="delete" Header="Delete" Click="deleteFromTable" IsEnabled="{Binding ElementName=createPdfFile, Path=IsEnabled}"/>
+                <Separator />
+                <MenuItem Name="FlightsByClient" Header="Flights by year" Click="flighst_by_year_click"/>
+                <MenuItem Name="changeDollar" Header="change Dollar" Click="change_dollar_click"/>
+            </MenuItem>
+            <MenuItem Header="_About" Click="MenuItem_Click" ToolTip="About TWM Airlisnes System"/>
+
+            
+
+
+        </Menu>
+        <ComboBox Name="language" Width="120" IsEditable="True" IsReadOnly="True" Text="English" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" SelectionChanged="ChangeLanguage">
+            <ComboBoxItem Name="English" Content="English"></ComboBoxItem>
+            <ComboBoxItem Name="Français" Content="Français"></ComboBoxItem>
+            <ComboBoxItem Name="Hebrow" Content="עברית"></ComboBoxItem>
+        </ComboBox>
+        <Label Name="clock" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="27" Width="195" Background="White"/>
+        <Label Content="Welcome to the TWM Airlines System" VerticalAlignment="Top" Margin="50,16,0,0" HorizontalAlignment="Left" FontWeight="Bold" Height="45" FontSize="24" Width="436"/>
+
+        <Button x:Name="clients" x:FieldModifier="public" Content="Clients" FontSize="20" HorizontalAlignment="Left" Margin="50,60,0,0" IsEnabled="False" VerticalAlignment="Top" Width="85" Height="50" Click="showClients" ToolTip="show clients table" />
+        <Button x:Name="flights" x:FieldModifier="public" Content="Flights" FontSize="20" HorizontalAlignment="Left" Margin="170,60,0,0" IsEnabled="False" VerticalAlignment="Top" Width="85" Height="50" Click="showflights" ToolTip="show flights table"/>
+        <Button Name="airplanes" Content="Airplanes" FontSize="20" HorizontalAlignment="Left" Margin="290,60,0,0" IsEnabled="False" VerticalAlignment="Top" Width="85" Height="50" Click="showAirplanes" ToolTip="show airplanes table"/>
+        <Button Name="workers" Content="Workers" FontSize="20" HorizontalAlignment="Left" Margin="410,60,0,0" IsEnabled="False" VerticalAlignment="Top" Width="85" Height="50" Click="showWorkers" ToolTip="show workers table"/>
+        <Button Name="tickets" Content="Tickets" FontSize="20" HorizontalAlignment="Left" Margin="530,60,0,0" IsEnabled="False" VerticalAlignment="Top" Width="85" Height="50" Click="showTickets" ToolTip="show tickets table"/>
+        <Button Name="flight_lines" Content="Flight lines" FontSize="20" HorizontalAlignment="Left" Margin="650,60,0,0" IsEnabled="False" VerticalAlignment="Top" Width="100" Height="50" Click="showFlightLines" ToolTip="show flight-lines table"/>
+        <Button Name="staffings" Content="Staffings" FontSize="20" HorizontalAlignment="Left" Margin="785,60,0,0" IsEnabled="False" VerticalAlignment="Top" Width="85" Height="50" Click="showstaffings" ToolTip="show staffings table"/>
+        <DataGrid Name="data_grid" Margin="0,130,0,28"/>
+        <Label Name="numOfRecords" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="27" Width="769" Background="White"/>
+        <fa:ImageAwesome Name="circle" Icon="Spinner" Spin="False" Visibility="Hidden" SpinDuration="4" Height="50" Width="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</Window>
